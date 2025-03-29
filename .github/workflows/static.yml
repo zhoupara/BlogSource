@@ -1,0 +1,70 @@
+# Simple workflow for deploying static content to GitHub Pages
+name: Zhoupara's Blog CI/CD
+
+on:
+  # Runs on pushes targeting the default branch
+  push:
+    branches: ["master", "main"]
+    paths:
+      - '*.json'
+      - '**.yml'
+      - '**/source/**'
+      
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.
+# However, do NOT cancel in-progress runs as we want to allow these production deployments to complete.
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  # Single deploy job since we're just deploying
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2 # 拉取仓库代码
+      - uses: actions/setup-node@v2 # 设置 node.js 环境
+        with:
+          node-version: '18'  # 根据你的 Node.js 版本进行调整
+      - name: Cache node_modules # 缓存 node_modules，提高编译速度，毕竟每月只有 2000 分钟。
+        uses: actions/cache@v2
+        env:
+          cache-name: cache-node-modules
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-build-${{ env.cache-name }}-
+            ${{ runner.os }}-build-
+            ${{ runner.os }}-
+      - name: Init Node.js # 安装源代码所需插件
+        run: |
+          npm install
+          echo "init node successful"
+      - name: Install Hexo-cli # 安装 Hexo
+        run: |
+          npm install -g hexo-cli --save
+          echo "install hexo successful"
+      - name: Build Blog # 编译创建静态博客文件
+        run: |
+          hexo clean
+          hexo g
+          echo "build blog successful"
+      - name: Deploy Shiguang's Blog # 设置 git 信息并推送静态博客文件
+        run: |
+          git config --global user.name "zhoupara"
+          git config --global user.email "zhou_para@163.com"
+          hexo deploy
+
+      - run: echo "Deploy Successful!"
