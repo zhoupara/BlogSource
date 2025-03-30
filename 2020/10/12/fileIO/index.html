@@ -5,39 +5,39 @@
 <meta name="viewport" content="width=device-width">
 <meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.3.0">
 
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
-  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <link rel="apple-touch-icon" sizes="180x180" href="/BlogSource/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/BlogSource/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/BlogSource/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/BlogSource/images/logo.svg" color="#222">
 
-<link rel="stylesheet" href="/css/main.css">
+<link rel="stylesheet" href="/BlogSource/css/main.css">
 
 
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha256-dABdfBfUoC8vJUBOwGVdm8L9qlMWaHTIfXt+7GnZCIo=" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
-<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.22.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js" defer></script>
+<script class="next-config" data-name="main" type="application/json">{"hostname":"zhoupara.github.io","root":"/BlogSource/","images":"/BlogSource/images","scheme":"Muse","darkmode":false,"version":"8.22.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/BlogSource/js/config.js" defer></script>
 
     <meta name="description" content="文件IO简介1.文件IO也称不带缓冲的I&#x2F;O(unbuffered)。不带缓冲指的是每个read, write都调用内核中的一个系统调用。2.遵循POSIX相关标准，任何兼容POSIX标准的操作系统上都支持文件I&#x2F;O。3.读写文件时, 每次操作都会执行相关系统调用, 好处是直接读写实际文件，坏处是频繁的系统调用会增加系统开销。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="文件IO--fileIO">
-<meta property="og:url" content="http://example.com/2020/10/12/fileIO/index.html">
+<meta property="og:url" content="https://zhoupara.github.io/BlogSource/2020/10/12/fileIO/index.html">
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="文件IO简介1.文件IO也称不带缓冲的I&#x2F;O(unbuffered)。不带缓冲指的是每个read, write都调用内核中的一个系统调用。2.遵循POSIX相关标准，任何兼容POSIX标准的操作系统上都支持文件I&#x2F;O。3.读写文件时, 每次操作都会执行相关系统调用, 好处是直接读写实际文件，坏处是频繁的系统调用会增加系统开销。">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://example.com/images/fileIO01.png">
+<meta property="og:image" content="https://zhoupara.github.io/images/fileIO01.png">
 <meta property="article:published_time" content="2020-10-12T02:58:48.000Z">
 <meta property="article:modified_time" content="2025-03-29T15:51:37.684Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://example.com/images/fileIO01.png">
+<meta name="twitter:image" content="https://zhoupara.github.io/images/fileIO01.png">
 
 
-<link rel="canonical" href="http://example.com/2020/10/12/fileIO/">
+<link rel="canonical" href="https://zhoupara.github.io/BlogSource/2020/10/12/fileIO/">
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"http://example.com/2020/10/12/fileIO/","path":"2020/10/12/fileIO/","title":"文件IO--fileIO"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://zhoupara.github.io/BlogSource/2020/10/12/fileIO/","path":"2020/10/12/fileIO/","title":"文件IO--fileIO"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
 <title>文件IO--fileIO | Hexo</title>
@@ -52,7 +52,7 @@
 
   
   <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
-<script src="/js/utils.js" defer></script><script src="/js/motion.js" defer></script><script src="/js/sidebar.js" defer></script><script src="/js/next-boot.js" defer></script>
+<script src="/BlogSource/js/utils.js" defer></script><script src="/BlogSource/js/motion.js" defer></script><script src="/BlogSource/js/sidebar.js" defer></script><script src="/BlogSource/js/next-boot.js" defer></script>
 
   
 
@@ -68,7 +68,7 @@
 
 
   <noscript>
-    <link rel="stylesheet" href="/css/noscript.css">
+    <link rel="stylesheet" href="/BlogSource/css/noscript.css">
   </noscript>
 </head>
 
@@ -85,7 +85,7 @@
 
   <div class="site-meta">
 
-    <a href="/" class="brand" rel="start">
+    <a href="/BlogSource/" class="brand" rel="start">
       <i class="logo-line"></i>
       <p class="site-title">Hexo</p>
       <i class="logo-line"></i>
@@ -134,7 +134,7 @@
 <div class="site-state-wrap animated">
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
-        <a href="/archives/">
+        <a href="/BlogSource/archives/">
           <span class="site-state-item-count">16</span>
           <span class="site-state-item-name">posts</span>
         </a>
@@ -167,10 +167,10 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2020/10/12/fileIO/">
+    <link itemprop="mainEntityOfPage" href="https://zhoupara.github.io/BlogSource/2020/10/12/fileIO/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="/BlogSource/images/avatar.gif">
       <meta itemprop="name" content="John Doe">
     </span>
 
@@ -261,12 +261,12 @@
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/2020/10/12/stdIO/" rel="prev" title="标准IO--stdIO">
+                <a href="/BlogSource/2020/10/12/stdIO/" rel="prev" title="标准IO--stdIO">
                   <i class="fa fa-angle-left"></i> 标准IO--stdIO
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/2020/11/12/2020-11-12/" rel="next" title="hexo博客部署到服务器">
+                <a href="/BlogSource/2020/11/12/2020-11-12/" rel="next" title="hexo博客部署到服务器">
                   hexo博客部署到服务器 <i class="fa fa-angle-right"></i>
                 </a>
             </div>

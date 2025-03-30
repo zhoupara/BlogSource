@@ -5,41 +5,41 @@
 <meta name="viewport" content="width=device-width">
 <meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.3.0">
 
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
-  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <link rel="apple-touch-icon" sizes="180x180" href="/BlogSource/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/BlogSource/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/BlogSource/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/BlogSource/images/logo.svg" color="#222">
 
-<link rel="stylesheet" href="/css/main.css">
+<link rel="stylesheet" href="/BlogSource/css/main.css">
 
 
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha256-dABdfBfUoC8vJUBOwGVdm8L9qlMWaHTIfXt+7GnZCIo=" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
-<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.22.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js" defer></script>
+<script class="next-config" data-name="main" type="application/json">{"hostname":"zhoupara.github.io","root":"/BlogSource/","images":"/BlogSource/images","scheme":"Muse","darkmode":false,"version":"8.22.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/BlogSource/js/config.js" defer></script>
 
     <meta name="description" content="ssh前言最近在写自动化脚本，需要登录多台服务器操作。由于频繁输入密码，进行配置免密登录(公钥登录)，在此记录细节。 ssh只是一种计算机之间机密登录的协议，它相对于telnet和rsh的明文传输，提供了加密、校验和压缩，使得我们可以很安全的远程操作，而不用担心信息泄露(当然不是绝对的，加密总有可能被破解，只是比起明文来说那是强了不少)。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="初识ssh">
-<meta property="og:url" content="http://example.com/2020/09/09/ssh01/index.html">
+<meta property="og:url" content="https://zhoupara.github.io/BlogSource/2020/09/09/ssh01/index.html">
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="ssh前言最近在写自动化脚本，需要登录多台服务器操作。由于频繁输入密码，进行配置免密登录(公钥登录)，在此记录细节。 ssh只是一种计算机之间机密登录的协议，它相对于telnet和rsh的明文传输，提供了加密、校验和压缩，使得我们可以很安全的远程操作，而不用担心信息泄露(当然不是绝对的，加密总有可能被破解，只是比起明文来说那是强了不少)。">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://example.com/images/ssh02.png">
-<meta property="og:image" content="http://example.com/images/ssh03.png">
-<meta property="og:image" content="http://example.com/images/ssh01.png">
+<meta property="og:image" content="https://zhoupara.github.io/images/ssh02.png">
+<meta property="og:image" content="https://zhoupara.github.io/images/ssh03.png">
+<meta property="og:image" content="https://zhoupara.github.io/images/ssh01.png">
 <meta property="article:published_time" content="2020-09-09T02:52:02.000Z">
 <meta property="article:modified_time" content="2025-03-29T15:51:37.695Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://example.com/images/ssh02.png">
+<meta name="twitter:image" content="https://zhoupara.github.io/images/ssh02.png">
 
 
-<link rel="canonical" href="http://example.com/2020/09/09/ssh01/">
+<link rel="canonical" href="https://zhoupara.github.io/BlogSource/2020/09/09/ssh01/">
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"http://example.com/2020/09/09/ssh01/","path":"2020/09/09/ssh01/","title":"初识ssh"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://zhoupara.github.io/BlogSource/2020/09/09/ssh01/","path":"2020/09/09/ssh01/","title":"初识ssh"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
 <title>初识ssh | Hexo</title>
@@ -54,7 +54,7 @@
 
   
   <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
-<script src="/js/utils.js" defer></script><script src="/js/motion.js" defer></script><script src="/js/sidebar.js" defer></script><script src="/js/next-boot.js" defer></script>
+<script src="/BlogSource/js/utils.js" defer></script><script src="/BlogSource/js/motion.js" defer></script><script src="/BlogSource/js/sidebar.js" defer></script><script src="/BlogSource/js/next-boot.js" defer></script>
 
   
 
@@ -70,7 +70,7 @@
 
 
   <noscript>
-    <link rel="stylesheet" href="/css/noscript.css">
+    <link rel="stylesheet" href="/BlogSource/css/noscript.css">
   </noscript>
 </head>
 
@@ -87,7 +87,7 @@
 
   <div class="site-meta">
 
-    <a href="/" class="brand" rel="start">
+    <a href="/BlogSource/" class="brand" rel="start">
       <i class="logo-line"></i>
       <p class="site-title">Hexo</p>
       <i class="logo-line"></i>
@@ -136,7 +136,7 @@
 <div class="site-state-wrap animated">
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
-        <a href="/archives/">
+        <a href="/BlogSource/archives/">
           <span class="site-state-item-count">16</span>
           <span class="site-state-item-name">posts</span>
         </a>
@@ -169,10 +169,10 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2020/09/09/ssh01/">
+    <link itemprop="mainEntityOfPage" href="https://zhoupara.github.io/BlogSource/2020/09/09/ssh01/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="/BlogSource/images/avatar.gif">
       <meta itemprop="name" content="John Doe">
     </span>
 
@@ -284,12 +284,12 @@
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/2019/10/06/T1006/" rel="prev" title="Hexo create">
+                <a href="/BlogSource/2019/10/06/T1006/" rel="prev" title="Hexo create">
                   <i class="fa fa-angle-left"></i> Hexo create
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/2020/09/13/weekend/" rel="next" title="weekend">
+                <a href="/BlogSource/2020/09/13/weekend/" rel="next" title="weekend">
                   weekend <i class="fa fa-angle-right"></i>
                 </a>
             </div>
